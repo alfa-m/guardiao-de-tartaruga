@@ -37,13 +37,13 @@ Características do código:
 - Ser claro e estruturado em funções
 
 ## Tarefas
-- [ ] Crie uma estrutura de dados usando listas, contendo ao menos 10 ninhos registrados, onde cada ninho será representado como uma sublista ou dicionário contendo os seguintes dados
-    - [ ] regiao (string): nome da área de praia ("Praia Norte", "Praia Central", etc.)
-    - [ ] quantidade_ovos (int): número de ovos identificados
-    - [ ] status (string): "intacto", "ameaçado" ou "danificado“
-    - [ ] risco (string): "estável", "sob observação" ou "crítico"
-    - [ ] dias_para_eclosao (int): número estimado de dias restantes
-    - [ ] predadores (bool): presença de predadores (True ou False)
+- [X] Crie uma estrutura de dados usando listas, contendo ao menos 10 ninhos registrados, onde cada ninho será representado como uma sublista ou dicionário contendo os seguintes dados
+    - [X] regiao (string): nome da área de praia ("Praia Norte", "Praia Central", etc.)
+    - [X] quantidade_ovos (int): número de ovos identificados
+    - [X] status (string): "intacto", "ameaçado" ou "danificado“
+    - [X] risco (string): "estável", "sob observação" ou "crítico"
+    - [X] dias_para_eclosao (int): número estimado de dias restantes
+    - [X] predadores (bool): presença de predadores (True ou False)
 - [ ] Implemente funções para responder às seguintes perguntas
     - [ ] Quantos ninhos há no total?
     - [ ] Qual a média de ovos por ninho com risco?
@@ -55,7 +55,7 @@ Características do código:
     - [ ] Visualizar o relatório completo da semana
     - [ ] Consultar estatísticas com base nas perguntas acima
     - [ ] Encerrar o sistema
-- [ ] Valide os dados inseridos (ex: não aceitar ovos negativos, status inválido, emojis diferentes dos status, etc.).
+- [X] Valide os dados inseridos (ex: não aceitar ovos negativos, status inválido, emojis diferentes dos status, etc.).
 
 Dados iniciais (exemplo mínimo com 5 registros)
 ninhos = [
