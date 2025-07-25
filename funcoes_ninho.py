@@ -79,9 +79,13 @@ def constroi_dicionario():
         print("Erro: Informações incompletas. O ninho não será adicionado.")
         return constroi_dicionario()
     else:
-        lista_de_ninhos.append(ninho)
-        print("Dicionário de ninho construído com sucesso!")
-        return ninho
+        if any(ninho.get(key) is None for key in chaves_validas):
+            print("Erro: Informações incompletas. O ninho não será adicionado.")
+            return constroi_dicionario()
+        else:
+            lista_de_ninhos.append(ninho)
+            print("Dicionário de ninho construído com sucesso!")
+            return ninho
 
 def exibe_ninhos():
     if not lista_de_ninhos:
