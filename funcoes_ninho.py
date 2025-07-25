@@ -1,4 +1,6 @@
-lista_de_ninhos = []
+import dados_ninho
+
+lista_de_ninhos = dados_ninho.lista_de_ninhos
 
 def pega_regiao():
     regiao = input("Digite a região do ninho: ")
