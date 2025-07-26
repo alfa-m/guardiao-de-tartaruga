@@ -45,8 +45,8 @@ Características do código:
     - [X] dias_para_eclosao (int): número estimado de dias restantes
     - [X] predadores (bool): presença de predadores (True ou False)
 - [ ] Implemente funções para responder às seguintes perguntas
-    - [ ] Quantos ninhos há no total?
-    - [ ] Qual a média de ovos por ninho com risco?
+    - [X] Quantos ninhos há no total?
+    - [X] Qual a média de ovos por ninho com risco?
     - [ ] Quantos ninhos estão prestes a eclodir (dias ≤ 5)?
     - [ ] Qual região tem mais ninhos sob risco?
     - [ ] Quantos ninhos têm presença de predadores e estão danificados?

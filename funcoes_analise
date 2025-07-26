@@ -1,88 +1,157 @@
+def valores_unicos_chave(lista_dicionarios, chave):
+    valores_unicos = set()
+    for dicionario in lista_dicionarios:
+        if chave in dicionario:
+            valores_unicos.add(dicionario[chave])
+    return valores_unicos
+
 def total_ninhos(lista_de_ninhos):
-    if len(lista_de_ninhos) == 0:
-        print("Não há nenhum ninho registrado.")
-    else:
+    if len(lista_de_ninhos) != 0:
         print('Total de ninhos registrados:', len(lista_de_ninhos))
+    else:
+        print("Não há nenhum ninho registrado.")
 
 def total_ovos(lista_de_ninhos):
-    if len(lista_de_ninhos) == 0:
+    if len(lista_de_ninhos) != 0:
+        total_ovos = sum(ninho['quantidade_ovos'] for ninho in lista_de_ninhos)
+        print('Total de ovos registrados:', total_ovos)
+    else:
         print("Não há ninhos registrados para contar os ovos.")
-        return
-    total_ovos = sum(ninho['quantidade_ovos'] for ninho in lista_de_ninhos)
-    print('Total de ovos registrados:', total_ovos)
+
+def total_ovos_por_regiao(lista_de_ninhos, regiao):
+    valores_unicos_regiao = valores_unicos_chave(lista_de_ninhos, 'regiao')
+    if regiao in valores_unicos_regiao:
+        lista_ninhos_regiao = [ninho for ninho in lista_de_ninhos if ninho['regiao'] == regiao]
+        print(f"Região '{regiao}'")
+        total_ovos(lista_ninhos_regiao)
+    else:
+        print(f"Nenhum ninho registrado na região '{regiao}' ou região inválida.")
+
+def total_ovos_regiao(lista_de_ninhos):
+    lista_regioes = valores_unicos_chave(lista_de_ninhos, 'regiao')
+    for regiao in lista_regioes:
+        total_ovos_por_regiao(lista_de_ninhos, regiao)
+
+def total_ovos_por_status(lista_de_ninhos, status):
+    valores_unicos_status = valores_unicos_chave(lista_de_ninhos, 'status')
+    if status in valores_unicos_status:
+        lista_ninhos_status = [ninho for ninho in lista_de_ninhos if ninho['status'] == status]
+        print(f"Status '{status}'")
+        total_ovos(lista_ninhos_status)
+    else:
+        print(f"Nenhum ninho registrado com o status '{status}' ou status inválido.")
+
+def total_ovos_status(lista_de_ninhos):
+    lista_status = valores_unicos_chave(lista_de_ninhos, 'status')
+    for status in lista_status:
+        total_ovos_por_status(lista_de_ninhos, status)
+
+def total_ovos_por_risco(lista_de_ninhos, risco):
+    valores_unicos_risco = valores_unicos_chave(lista_de_ninhos, 'risco')
+    if risco in valores_unicos_risco:
+        lista_ninhos_risco = [ninho for ninho in lista_de_ninhos if ninho['risco'] == risco]
+        print(f"Risco '{risco}'")
+        total_ovos(lista_ninhos_risco)
+    else:
+        print(f"Nenhum ninho registrado com o risco '{risco}' ou risco inválido.")
+
+def total_ovos_risco(lista_de_ninhos):
+    lista_riscos = valores_unicos_chave(lista_de_ninhos, 'risco')
+    for risco in lista_riscos:
+        total_ovos_por_risco(lista_de_ninhos, risco)
+
+def total_ovos_por_predadores(lista_de_ninhos, predadores):
+    valores_unicos_predadores = valores_unicos_chave(lista_de_ninhos, 'predadores')
+    if predadores in valores_unicos_predadores:
+        lista_ninhos_predadores = [ninho for ninho in lista_de_ninhos if ninho['predadores'] == predadores]
+        print(f"Predadores '{predadores}'")
+        total_ovos(lista_ninhos_predadores)
+    else:
+        print(f"Nenhum ninho registrado com os predadores '{predadores}' ou predador inválido.")
+
+def total_ovos_predadores(lista_de_ninhos):
+    lista_predadores = valores_unicos_chave(lista_de_ninhos, 'predadores')
+    for predador in lista_predadores:
+        total_ovos_por_predadores(lista_de_ninhos, predador)
 
 def media_ovos(lista_de_ninhos):
-    if len(lista_de_ninhos) == 0:
+    if len(lista_de_ninhos) != 0:
+        total_ovos = sum(ninho['quantidade_ovos'] for ninho in lista_de_ninhos)
+        media = total_ovos / len(lista_de_ninhos)
+        print(f'Média de ovos por ninho: {media:.2f}')
+    else:
         print("Não há ninhos registrados para calcular a média.")
-        return
-    total_ovos = sum(ninho['quantidade_ovos'] for ninho in lista_de_ninhos)
-    media = total_ovos / len(lista_de_ninhos)
-    print(f'Média de ovos por ninho: {media:.2f}')
 
 def media_ovos_por_regiao(lista_de_ninhos, regiao):
-    lista_ninhos_regiao = []
-    for ninho in lista_de_ninhos:
-        if ninho['regiao'] == regiao:
-            lista_ninhos_regiao.append(ninho)
-    media_ovos(lista_ninhos_regiao)
+    valores_unicos_regiao = valores_unicos_chave(lista_de_ninhos, 'regiao')
+    if regiao in valores_unicos_regiao:
+        lista_ninhos_regiao = [ninho for ninho in lista_de_ninhos if ninho['regiao'] == regiao]
+        print(f"Região '{regiao}'")
+        media_ovos(lista_ninhos_regiao)
+    else:
+        print(f"Nenhum ninho registrado na região '{regiao}' ou região inválida.")
 
 def media_ovos_regiao(lista_de_ninhos):
-    lista_regioes = lista_de_ninhos['regiao'].unique()
-    if len(lista_regioes) == 0:
-        print("Não há ninhos registrados para calcular a média por região.")
-        return
+    lista_regioes = valores_unicos_chave(lista_de_ninhos, 'regiao')
     for regiao in lista_regioes:
-        lista_de_ninhos(lista_de_ninhos, regiao)
+        media_ovos_por_regiao(lista_de_ninhos, regiao)
 
 def media_ovos_por_status(lista_de_ninhos, status):
-    lista_ninhos_status = []
-    for ninho in lista_de_ninhos:
-        if ninho['status'] == status:
-            lista_ninhos_status.append(ninho)
-    media_ovos(lista_ninhos_status)
+    valores_unicos_status = valores_unicos_chave(lista_de_ninhos, 'status')
+    if status in valores_unicos_status:
+        lista_ninhos_status = [ninho for ninho in lista_de_ninhos if ninho['status'] == status]
+        print(f"Status '{status}'")
+        media_ovos(lista_ninhos_status)
+    else:
+        print(f"Nenhum ninho registrado com o status '{status}' ou status inválido.")
 
 def media_ovos_status(lista_de_ninhos):
-    lista_status = lista_de_ninhos['status'].unique()
-    if len(lista_status) == 0:
-        print("Não há ninhos registrados para calcular a média por status.")
-        return
+    lista_status = valores_unicos_chave(lista_de_ninhos, 'status')
     for status in lista_status:
         media_ovos_por_status(lista_de_ninhos, status)
 
 def media_ovos_por_risco(lista_de_ninhos, risco):
-    lista_ninhos_risco = []
-    for ninho in lista_de_ninhos:
-        if ninho['risco'] == risco:
-            lista_ninhos_risco.append(ninho)
-    media_ovos(lista_ninhos_risco)
+    valores_unicos_risco = valores_unicos_chave(lista_de_ninhos, 'risco')
+    if risco in valores_unicos_risco:
+        lista_ninhos_risco = [ninho for ninho in lista_de_ninhos if ninho['risco'] == risco]
+        print(f"Risco '{risco}'")
+        media_ovos(lista_ninhos_risco)
+    else:
+        print(f"Nenhum ninho registrado com o risco '{risco}' ou risco inválido.")
 
 def media_ovos_risco(lista_de_ninhos):
-    lista_riscos = lista_de_ninhos['risco'].unique()
-    if len(lista_riscos) == 0:
-        print("Não há ninhos registrados para calcular a média por risco.")
-        return
+    lista_riscos = valores_unicos_chave(lista_de_ninhos, 'risco')
     for risco in lista_riscos:
         media_ovos_por_risco(lista_de_ninhos, risco)
 
 def media_ovos_por_predadores(lista_de_ninhos, predadores):
-    lista_ninhos_predadores = []
-    for ninho in lista_de_ninhos:
-        if ninho['predadores'] == predadores:
-            lista_ninhos_predadores.append(ninho)
-    media_ovos(lista_ninhos_predadores)
+    valores_unicos_predadores = valores_unicos_chave(lista_de_ninhos, 'predadores')
+    if predadores in valores_unicos_predadores:
+        lista_ninhos_predadores = [ninho for ninho in lista_de_ninhos if ninho['predadores'] == predadores]
+        print(f"Predadores '{predadores}'")
+        media_ovos(lista_ninhos_predadores)
+    else:
+        print(f"Nenhum ninho registrado com os predadores '{predadores}' ou predador inválido.")
 
 def media_ovos_predadores(lista_de_ninhos):
-    lista_predadores = lista_de_ninhos['predadores'].unique()
-    if len(lista_predadores) == 0:
-        print("Não há ninhos registrados para calcular a média por predadores.")
-        return
+    lista_predadores = valores_unicos_chave(lista_de_ninhos, 'predadores')
     for predador in lista_predadores:
         media_ovos_por_predadores(lista_de_ninhos, predador)
 
-    lista_riscos = lista_de_ninhos['risco'].unique()
-    if len(lista_riscos) == 0:
-        print("Não há ninhos registrados para contar por risco.")
-    else:
-        for risco in lista_riscos:
-            total_ninhos = sum(1 for ninho in lista_de_ninhos if ninho['risco'] == risco)
-            print(f'Total de ninhos com risco {risco}: {total_ninhos}')
+
+import dados_ninho
+lista_de_ninhos_teste = dados_ninho.lista_de_ninhos
+
+"""
+total_ninhos(lista_de_ninhos_teste)
+total_ovos(lista_de_ninhos_teste)
+media_ovos(lista_de_ninhos_teste)
+total_ovos_regiao(lista_de_ninhos_teste)
+media_ovos_regiao(lista_de_ninhos_teste)
+total_ovos_status(lista_de_ninhos_teste)
+media_ovos_status(lista_de_ninhos_teste)
+total_ovos_risco(lista_de_ninhos_teste)
+media_ovos_risco(lista_de_ninhos_teste)
+total_ovos_predadores(lista_de_ninhos_teste)
+media_ovos_predadores(lista_de_ninhos_teste)
+"""
