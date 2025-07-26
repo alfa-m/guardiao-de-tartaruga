@@ -11,7 +11,11 @@ def mostra_total_ninhos(lista_de_ninhos):
         print("Não há nenhum ninho registrado.")
 
 def lista_ninhos_condional(lista_de_ninhos, condicao, valor_condicao):
-    if condicao == 'eclosão' and valor_condicao == 'sim':
+    if condicao == 'predadores' and valor_condicao == 'true':
+        return [ninho for ninho in lista_de_ninhos if ninho['predadores']]
+    elif condicao == 'predadores' and valor_condicao == 'false':
+        return [ninho for ninho in lista_de_ninhos if not ninho['predadores']]
+    elif condicao == 'eclosão' and valor_condicao == 'sim':
         return [ninho for ninho in lista_de_ninhos if ninho['dias_para_eclosao'] <= 5]
     elif condicao == 'eclosão' and valor_condicao == 'não':
         return [ninho for ninho in lista_de_ninhos if ninho['dias_para_eclosao'] > 5]
@@ -29,10 +33,12 @@ def total_ninhos_condicional(lista_de_ninhos, condicao, valor_condicao):
             return total_ninhos(lista_ninhos_condicao)
         else:
             return -1
+    else:
+        return -1
 
 def mostra_total_ninhos_condicional(lista_de_ninhos):
     condicao = input("Digite a condição (regiao, status, risco, eclosão, predadores): ").lower()
-    if condicao in ['regiao', 'status', 'risco', 'predadores']:
+    if condicao in ['regiao', 'status', 'risco']:
         valor_condicao = input(f'Digite o valor para a condição "{condicao}": ').lower()
         if condicao == 'regiao':
             valor_condicao = valor_condicao.title()
@@ -41,14 +47,26 @@ def mostra_total_ninhos_condicional(lista_de_ninhos):
             print(f'Total de ninhos para a condição "{condicao}" igual a "{valor_condicao}":', total)
         else:
             print("Valor de condição inválido.")
+    elif condicao == 'predadores':
+        valor_condicao = input('Digite o valor para a condição "predadores" (true/false): ')
+        if valor_condicao in ['true', 'false']:
+            total = total_ninhos_condicional(lista_de_ninhos, 'predadores', valor_condicao)
+            if total != -1 and valor_condicao == 'true':
+                print('Total de ninhos com presença de predadores:', total)
+            elif total != -1 and valor_condicao == 'false':
+                print('Total de ninhos sem presença de predadores:', total)
+            else:
+                print("Valor de condição inválido.")
+        else:
+            print("Valor de condição inválido. Use 'true' ou 'false'.")
     elif condicao == 'eclosão':
         valor_condicao = input('Digite o valor para a condição "eclosão" (sim/não): ').lower()
         if valor_condicao in ['sim', 'não']:
             total = total_ninhos_condicional(lista_de_ninhos, 'eclosão', valor_condicao)
             if total != -1 and valor_condicao == 'sim':
-                print(f'Total de ninhos próximos a eclosão:', total)
+                print('Total de ninhos próximos a eclosão:', total)
             elif total != -1 and valor_condicao == 'não':
-                print(f'Total de ninhos não próximos a eclosão:', total)
+                print('Total de ninhos não próximos a eclosão:', total)
             else:
                 print("Valor de condição inválido.")
         else:
@@ -77,6 +95,8 @@ def total_ovos_condicional(lista_de_ninhos, condicao, valor_condicao):
             return total_ovos(lista_ninhos_condicao)
         else:
             return -1
+    else:
+        return -1
 
 def mostra_total_ovos_condicional(lista_de_ninhos):
     condicao = input("Digite a condição (regiao, status, risco, eclosão, predadores): ").lower()
@@ -89,6 +109,18 @@ def mostra_total_ovos_condicional(lista_de_ninhos):
             print(f'Total de ovos para a condição "{condicao}" igual a "{valor_condicao}":', total)
         else:
             print("Valor de condição inválido.")
+    elif condicao == 'predadores':
+        valor_condicao = input('Digite o valor para a condição "predadores" (true/false): ')
+        if valor_condicao in ['true', 'false']:
+            total = total_ovos_condicional(lista_de_ninhos, 'predadores', valor_condicao)
+            if total != -1 and valor_condicao == 'true':
+                print('Total de ovos com presença de predadores:', total)
+            elif total != -1 and valor_condicao == 'false':
+                print('Total de ovos sem presença de predadores:', total)
+            else:
+                print("Valor de condição inválido.")
+        else:
+            print("Valor de condição inválido. Use 'true' ou 'false'.")
     elif condicao == 'eclosão':
         valor_condicao = input('Digite o valor para a condição "eclosão" (sim/não): ').lower()
         if valor_condicao in ['sim', 'não']:
@@ -123,6 +155,8 @@ def media_ovos_condicional(lista_de_ninhos, condicao, valor_condicao):
             return media_ovos(lista_ninhos_condicao)
         else:
             return -1
+    else:
+        return -1
 
 def mostra_media_ovos_condicional(lista_de_ninhos):
     condicao = input("Digite a condição (regiao, status, risco, eclosão, predadores): ").lower()
@@ -135,6 +169,18 @@ def mostra_media_ovos_condicional(lista_de_ninhos):
             print(f'Média de ovos para a condição "{condicao}" igual a "{valor_condicao}": {total:.2f}')
         else:
             print("Valor de condição inválido.")
+    elif condicao == 'predadores':
+        valor_condicao = input('Digite o valor para a condição "predadores" (true/false): ')
+        if valor_condicao in ['true', 'false']:
+            total = media_ovos_condicional(lista_de_ninhos, 'predadores', valor_condicao)
+            if total != -1 and valor_condicao == 'true':
+                print('Média de ovos com presença de predadores:', total)
+            elif total != -1 and valor_condicao == 'false':
+                print('Média de ovos sem presença de predadores:', total)
+            else:
+                print("Valor de condição inválido.")
+        else:
+            print("Valor de condição inválido. Use 'true' ou 'false'.")
     elif condicao == 'eclosão':
         valor_condicao = input('Digite o valor para a condição "eclosão" (sim/não): ').lower()
         if valor_condicao in ['sim', 'não']:

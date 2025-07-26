@@ -95,10 +95,21 @@ def consultar_estatisticas():
             print(f'Quantidade de ninhos próximos a eclosão: {total}')
             
         elif opcao_estatistica == '4':
-            print("Região com maior quantidade de ninhos sob risco 'crítico':")
+            print("Você escolheu ver a região com maior quantidade de ninhos sob risco 'crítico'")
+            ninhos_criticos = funcoes_analise.lista_ninhos_condional(ninhos, 'risco', 'crítico')
+            ninho_mais_critico = {}
+            maior = 0
+            for ninho in ninhos_criticos:
+                if ninho['quantidade_ovos'] >= maior:
+                    maior = ninho['quantidade_ovos']
+                    ninho_mais_critico = ninho
+            print(f'Região com maior quantidade de ninhos sob risco "crítico": {ninho_mais_critico['regiao']}')
             
         elif opcao_estatistica == '5':
-            print("Quantidade de ninhos com presença de predadores e com status 'danificado':")
+            print("Você escolheu ver a quantidade de ninhos com presença de predadores e com status 'danificado'")
+            ninhos_danificados = funcoes_analise.lista_ninhos_condional(ninhos, 'status', 'danificado')
+            total = funcoes_analise.total_ninhos_condicional(ninhos_danificados, 'predadores', True)
+            print(f'Quantidade de ninhos com presença de predadores e status "danificado": {total}')
             
         elif opcao_estatistica.lower() != 'voltar':
             print("Opção inválida. Tente novamente.")
