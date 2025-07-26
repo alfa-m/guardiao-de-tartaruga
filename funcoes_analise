@@ -72,11 +72,39 @@ def mostra_total_ovos_condicional(lista_de_ninhos):
     else:
         print("Condição inválida. Use 'regiao', 'status', 'risco' ou 'predadores'.")
 
+def media_ovos(lista_de_ninhos):
+    if len(lista_de_ninhos) != 0:
+        total = total_ovos(lista_de_ninhos)
+        media = total / len(lista_de_ninhos)
+        return media
+    else:
+        return 0
+
+def media_ovos_condicional(lista_de_ninhos, condicao, valor_condicao):
+    valores_unicos_condicao = valores_unicos_chave(lista_de_ninhos, condicao)
+    if valor_condicao in valores_unicos_condicao:
+        lista_ninhos_condicao = lista_ninhos_condional(lista_de_ninhos, condicao, valor_condicao)
+        return media_ovos(lista_ninhos_condicao)
+    else:
+        return -1
+
+def mostra_media_ovos_condicional(lista_de_ninhos):
+    condicao = input("Digite a condição (regiao, status, risco, predadores): ").lower()
+    if condicao in ['regiao', 'status', 'risco', 'predadores']:
+        valor_condicao = input(f'Digite o valor para a condição "{condicao}": ').lower()
+        if condicao == 'regiao':
+            valor_condicao = valor_condicao.title()
+        media = media_ovos_condicional(lista_de_ninhos, condicao, valor_condicao)
+        if media != -1:
+            print(f'Média de ovos para a condição "{condicao}" igual a "{valor_condicao}": {media:.2f}')
+        else:
+            print("Valor de condição inválido.")
+    else:
+        print("Condição inválida. Use 'regiao', 'status', 'risco' ou 'predadores'.")
 
 import dados_ninho
 lista_de_ninhos_teste = dados_ninho.lista_de_ninhos
-mostra_total_ninhos_condicional(lista_de_ninhos_teste)
-mostra_total_ovos_condicional(lista_de_ninhos_teste)
+mostra_media_ovos_condicional(lista_de_ninhos_teste)
 
 
 """
