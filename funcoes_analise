@@ -1,9 +1,4 @@
-def valores_unicos_chave(lista_dicionarios, chave):
-    valores_unicos = set()
-    for dicionario in lista_dicionarios:
-        if chave in dicionario:
-            valores_unicos.add(dicionario[chave])
-    return valores_unicos
+import funcoes_complementares
 
 def total_ninhos(lista_de_ninhos):
     return len(lista_de_ninhos)
@@ -28,7 +23,7 @@ def total_ninhos_condicional(lista_de_ninhos, condicao, valor_condicao):
         lista_ninhos_condicao = lista_ninhos_condional(lista_de_ninhos, condicao, valor_condicao)
         return total_ninhos(lista_ninhos_condicao)
     elif condicao in ['regiao', 'status', 'risco', 'predadores']:
-        valores_unicos_condicao = valores_unicos_chave(lista_de_ninhos, condicao)
+        valores_unicos_condicao = funcoes_complementares.valores_unicos_chave(lista_de_ninhos, condicao)
         if valor_condicao in valores_unicos_condicao:
             lista_ninhos_condicao = lista_ninhos_condional(lista_de_ninhos, condicao, valor_condicao)
             return total_ninhos(lista_ninhos_condicao)
@@ -51,9 +46,9 @@ def mostra_total_ninhos_condicional(lista_de_ninhos):
         if valor_condicao in ['sim', 'não']:
             total = total_ninhos_condicional(lista_de_ninhos, 'eclosão', valor_condicao)
             if total != -1 and valor_condicao == 'sim':
-                print(f'Total de ninhos próximos a eclosão: ', total)
+                print(f'Total de ninhos próximos a eclosão:', total)
             elif total != -1 and valor_condicao == 'não':
-                print(f'Total de ninhos não próximos a eclosão: ', total)
+                print(f'Total de ninhos não próximos a eclosão:', total)
             else:
                 print("Valor de condição inválido.")
         else:
@@ -76,7 +71,7 @@ def total_ovos_condicional(lista_de_ninhos, condicao, valor_condicao):
         lista_ninhos_condicao = lista_ninhos_condional(lista_de_ninhos, condicao, valor_condicao)
         return total_ovos(lista_ninhos_condicao)
     elif condicao in ['regiao', 'status', 'risco', 'predadores']:
-        valores_unicos_condicao = valores_unicos_chave(lista_de_ninhos, condicao)
+        valores_unicos_condicao = funcoes_complementares.valores_unicos_chave(lista_de_ninhos, condicao)
         if valor_condicao in valores_unicos_condicao:
             lista_ninhos_condicao = lista_ninhos_condional(lista_de_ninhos, condicao, valor_condicao)
             return total_ovos(lista_ninhos_condicao)
@@ -99,9 +94,9 @@ def mostra_total_ovos_condicional(lista_de_ninhos):
         if valor_condicao in ['sim', 'não']:
             total = total_ovos_condicional(lista_de_ninhos, 'eclosão', valor_condicao)
             if total != -1 and valor_condicao == 'sim':
-                print(f'Total de ovos próximos a eclosão: ', total)
+                print(f'Total de ovos próximos a eclosão:', total)
             elif total != -1 and valor_condicao == 'não':
-                print(f'Total de ovos não próximos a eclosão: ', total)
+                print(f'Total de ovos não próximos a eclosão:', total)
             else:
                 print("Valor de condição inválido.")
         else:
@@ -122,7 +117,7 @@ def media_ovos_condicional(lista_de_ninhos, condicao, valor_condicao):
         lista_ninhos_condicao = lista_ninhos_condional(lista_de_ninhos, condicao, valor_condicao)
         return media_ovos(lista_ninhos_condicao)
     elif condicao in ['regiao', 'status', 'risco', 'predadores']:
-        valores_unicos_condicao = valores_unicos_chave(lista_de_ninhos, condicao)
+        valores_unicos_condicao = funcoes_complementares.valores_unicos_chave(lista_de_ninhos, condicao)
         if valor_condicao in valores_unicos_condicao:
             lista_ninhos_condicao = lista_ninhos_condional(lista_de_ninhos, condicao, valor_condicao)
             return media_ovos(lista_ninhos_condicao)
@@ -137,7 +132,7 @@ def mostra_media_ovos_condicional(lista_de_ninhos):
             valor_condicao = valor_condicao.title()
         total = media_ovos_condicional(lista_de_ninhos, condicao, valor_condicao)
         if total != -1:
-            print(f'Média de ovos para a condição "{condicao}" igual a "{valor_condicao}":', total)
+            print(f'Média de ovos para a condição "{condicao}" igual a "{valor_condicao}": {total:.2f}')
         else:
             print("Valor de condição inválido.")
     elif condicao == 'eclosão':
@@ -145,9 +140,9 @@ def mostra_media_ovos_condicional(lista_de_ninhos):
         if valor_condicao in ['sim', 'não']:
             total = media_ovos_condicional(lista_de_ninhos, 'eclosão', valor_condicao)
             if total != -1 and valor_condicao == 'sim':
-                print(f'Média de ovos próximos a eclosão: ', total)
+                print(f'Média de ovos próximos a eclosão: {total:.2f}')
             elif total != -1 and valor_condicao == 'não':
-                print(f'Média de ovos não próximos a eclosão: ', total)
+                print(f'Média de ovos não próximos a eclosão: {total:.2f}')
             else:
                 print("Valor de condição inválido.")
         else:

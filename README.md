@@ -47,7 +47,7 @@ Características do código:
 - [ ] Implemente funções para responder às seguintes perguntas
     - [X] Quantos ninhos há no total?
     - [X] Qual a média de ovos por ninho com risco?
-    - [ ] Quantos ninhos estão prestes a eclodir (dias ≤ 5)?
+    - [X] Quantos ninhos estão prestes a eclodir (dias ≤ 5)?
     - [ ] Qual região tem mais ninhos sob risco?
     - [ ] Quantos ninhos têm presença de predadores e estão danificados?
 - [ ] Crie um menu interativo com input() que permita ao usuário
