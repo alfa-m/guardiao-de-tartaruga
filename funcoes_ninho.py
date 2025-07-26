@@ -47,9 +47,9 @@ def pega_dias_para_eclosao():
 def pega_predadores():
     predadores = input("Digite se o ninho tem predadores ('sim' ou 'não'): ")
     if predadores.lower() == "sim":
-        return predadores == True
+        return True
     elif predadores.lower() == "não":
-        return predadores == False
+        return False
     else:
         print("Erro: Resposta inválida. Digite 'sim' ou 'não'.")
         return pega_predadores()
@@ -82,7 +82,7 @@ def constroi_dicionario():
     else:
         if any(ninho.get(key) is None for key in chaves_validas):
             print("Erro: Informações incompletas. O ninho não será adicionado.")
-            return constroi_dicionario()
+            return None
         else:
             lista_de_ninhos.append(ninho)
             print("Dicionário de ninho construído com sucesso!")
