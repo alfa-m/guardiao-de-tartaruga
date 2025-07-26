@@ -57,7 +57,6 @@ def pega_predadores():
 def constroi_dicionario():
     chaves_validas = ['regiao', 'quantidade_ovos', 'status', 'risco', 'dias_para_eclosao', 'predadores']
 
-    print("Construindo dicionário de ninhos...")
     ninho = {}
     ninho['regiao'] = pega_regiao()
     print("Região do ninho:", ninho['regiao'])

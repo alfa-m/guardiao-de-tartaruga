@@ -46,15 +46,15 @@ Características do código:
     - [X] predadores (bool): presença de predadores (True ou False)
 - [ ] Implemente funções para responder às seguintes perguntas
     - [X] Quantos ninhos há no total?
-    - [X] Qual a média de ovos por ninho com risco?
+    - [X] Qual a média de ovos por ninho com risco "estável"?
     - [X] Quantos ninhos estão prestes a eclodir (dias ≤ 5)?
     - [ ] Qual região tem mais ninhos sob risco?
     - [ ] Quantos ninhos têm presença de predadores e estão danificados?
 - [ ] Crie um menu interativo com input() que permita ao usuário
-    - [ ] Inserir novos ninhos
+    - [X] Inserir novos ninhos
     - [ ] Visualizar o relatório completo da semana
     - [ ] Consultar estatísticas com base nas perguntas acima
-    - [ ] Encerrar o sistema
+    - [X] Encerrar o sistema
 - [X] Valide os dados inseridos (ex: não aceitar ovos negativos, status inválido, emojis diferentes dos status, etc.).
 
 Dados iniciais (exemplo mínimo com 5 registros)
