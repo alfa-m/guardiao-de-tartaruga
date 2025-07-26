@@ -6,74 +6,80 @@ def valores_unicos_chave(lista_dicionarios, chave):
     return valores_unicos
 
 def total_ninhos(lista_de_ninhos):
-    if len(lista_de_ninhos) != 0:
-        print('Total de ninhos registrados:', len(lista_de_ninhos))
+    return len(lista_de_ninhos)
+
+def mostra_total_ninhos(lista_de_ninhos):
+    total = total_ninhos(lista_de_ninhos)
+    if total != 0:
+        print('Total de ninhos registrados:', total)
     else:
         print("Não há nenhum ninho registrado.")
 
+def lista_ninhos_condional(lista_de_ninhos, condicao, valor_condicao):
+    return [ninho for ninho in lista_de_ninhos if ninho[condicao] == valor_condicao]
+
+def total_ninhos_condicional(lista_de_ninhos, condicao, valor_condicao):
+    valores_unicos_condicao = valores_unicos_chave(lista_de_ninhos, condicao)
+    if valor_condicao in valores_unicos_condicao:
+        lista_ninhos_condicao = lista_ninhos_condional(lista_de_ninhos, condicao, valor_condicao)
+        return total_ninhos(lista_ninhos_condicao)
+    else:
+        return -1
+
+def mostra_total_ninhos_condicional(lista_de_ninhos):
+    condicao = input("Digite a condição (regiao, status, risco, predadores): ").lower()
+    if condicao in ['regiao', 'status', 'risco', 'predadores']:
+        valor_condicao = input(f'Digite o valor para a condição "{condicao}": ').lower()
+        if condicao == 'regiao':
+            valor_condicao = valor_condicao.title()
+        total = total_ninhos_condicional(lista_de_ninhos, condicao, valor_condicao)
+        if total != -1:
+            print(f'Total de ninhos para a condição "{condicao}" igual a "{valor_condicao}":', total)
+        else:
+            print("Valor de condição inválido.")
+    else:
+        print("Condição inválida. Use 'regiao', 'status', 'risco' ou 'predadores'.")
+
 def total_ovos(lista_de_ninhos):
-    if len(lista_de_ninhos) != 0:
-        total_ovos = sum(ninho['quantidade_ovos'] for ninho in lista_de_ninhos)
-        print('Total de ovos registrados:', total_ovos)
+    return sum(ninho['quantidade_ovos'] for ninho in lista_de_ninhos if 'quantidade_ovos' in ninho)
+
+def mostra_total_ovos(lista_de_ninhos):
+    total = total_ovos(lista_de_ninhos)
+    if total != 0:
+        print('Total de ovos registrados:', total)
     else:
-        print("Não há ninhos registrados para contar os ovos.")
+        print("Não há ovos registrados.")
 
-def total_ovos_por_regiao(lista_de_ninhos, regiao):
-    valores_unicos_regiao = valores_unicos_chave(lista_de_ninhos, 'regiao')
-    if regiao in valores_unicos_regiao:
-        lista_ninhos_regiao = [ninho for ninho in lista_de_ninhos if ninho['regiao'] == regiao]
-        print(f"Região '{regiao}'")
-        total_ovos(lista_ninhos_regiao)
+def total_ovos_condicional(lista_de_ninhos, condicao, valor_condicao):
+    valores_unicos_condicao = valores_unicos_chave(lista_de_ninhos, condicao)
+    if valor_condicao in valores_unicos_condicao:
+        lista_ninhos_condicao = lista_ninhos_condional(lista_de_ninhos, condicao, valor_condicao)
+        return total_ovos(lista_ninhos_condicao)
     else:
-        print(f"Nenhum ninho registrado na região '{regiao}' ou região inválida.")
+        return -1
 
-def total_ovos_regiao(lista_de_ninhos):
-    lista_regioes = valores_unicos_chave(lista_de_ninhos, 'regiao')
-    for regiao in lista_regioes:
-        total_ovos_por_regiao(lista_de_ninhos, regiao)
-
-def total_ovos_por_status(lista_de_ninhos, status):
-    valores_unicos_status = valores_unicos_chave(lista_de_ninhos, 'status')
-    if status in valores_unicos_status:
-        lista_ninhos_status = [ninho for ninho in lista_de_ninhos if ninho['status'] == status]
-        print(f"Status '{status}'")
-        total_ovos(lista_ninhos_status)
+def mostra_total_ovos_condicional(lista_de_ninhos):
+    condicao = input("Digite a condição (regiao, status, risco, predadores): ").lower()
+    if condicao in ['regiao', 'status', 'risco', 'predadores']:
+        valor_condicao = input(f'Digite o valor para a condição "{condicao}": ').lower()
+        if condicao == 'regiao':
+            valor_condicao = valor_condicao.title()
+        total = total_ovos_condicional(lista_de_ninhos, condicao, valor_condicao)
+        if total != -1:
+            print(f'Total de ovos para a condição "{condicao}" igual a "{valor_condicao}":', total)
+        else:
+            print("Valor de condição inválido.")
     else:
-        print(f"Nenhum ninho registrado com o status '{status}' ou status inválido.")
+        print("Condição inválida. Use 'regiao', 'status', 'risco' ou 'predadores'.")
 
-def total_ovos_status(lista_de_ninhos):
-    lista_status = valores_unicos_chave(lista_de_ninhos, 'status')
-    for status in lista_status:
-        total_ovos_por_status(lista_de_ninhos, status)
 
-def total_ovos_por_risco(lista_de_ninhos, risco):
-    valores_unicos_risco = valores_unicos_chave(lista_de_ninhos, 'risco')
-    if risco in valores_unicos_risco:
-        lista_ninhos_risco = [ninho for ninho in lista_de_ninhos if ninho['risco'] == risco]
-        print(f"Risco '{risco}'")
-        total_ovos(lista_ninhos_risco)
-    else:
-        print(f"Nenhum ninho registrado com o risco '{risco}' ou risco inválido.")
+import dados_ninho
+lista_de_ninhos_teste = dados_ninho.lista_de_ninhos
+mostra_total_ninhos_condicional(lista_de_ninhos_teste)
+mostra_total_ovos_condicional(lista_de_ninhos_teste)
 
-def total_ovos_risco(lista_de_ninhos):
-    lista_riscos = valores_unicos_chave(lista_de_ninhos, 'risco')
-    for risco in lista_riscos:
-        total_ovos_por_risco(lista_de_ninhos, risco)
 
-def total_ovos_por_predadores(lista_de_ninhos, predadores):
-    valores_unicos_predadores = valores_unicos_chave(lista_de_ninhos, 'predadores')
-    if predadores in valores_unicos_predadores:
-        lista_ninhos_predadores = [ninho for ninho in lista_de_ninhos if ninho['predadores'] == predadores]
-        print(f"Predadores '{predadores}'")
-        total_ovos(lista_ninhos_predadores)
-    else:
-        print(f"Nenhum ninho registrado com os predadores '{predadores}' ou predador inválido.")
-
-def total_ovos_predadores(lista_de_ninhos):
-    lista_predadores = valores_unicos_chave(lista_de_ninhos, 'predadores')
-    for predador in lista_predadores:
-        total_ovos_por_predadores(lista_de_ninhos, predador)
-
+"""
 def media_ovos(lista_de_ninhos):
     if len(lista_de_ninhos) != 0:
         total_ovos = sum(ninho['quantidade_ovos'] for ninho in lista_de_ninhos)
@@ -142,7 +148,6 @@ def media_ovos_predadores(lista_de_ninhos):
 import dados_ninho
 lista_de_ninhos_teste = dados_ninho.lista_de_ninhos
 
-"""
 total_ninhos(lista_de_ninhos_teste)
 total_ovos(lista_de_ninhos_teste)
 media_ovos(lista_de_ninhos_teste)
