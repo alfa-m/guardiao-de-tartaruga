@@ -1,16 +1,16 @@
-# Arquivo dados_ninho.py
-# Sobre o arquivo:
-## Contém os dados iniciais dos ninhos de tartarugas marinhas
+## Arquivo dados_ninho.py
+## Sobre o arquivo:
+### Contém os dados iniciais dos ninhos de tartarugas marinhas
 
-# Sobre os dados:
-## Cada ninho é representado por um dicionário com as informações solicitadas
-## Chaves do dicionário:
-## - 'regiao' -> Recebe valor do tipo string, representando a região onde o ninho está localizado
-## - 'quantidade_ovos' -> Recebe valor do tipo inteiro, representando a quantidade de ovos no ninho
-## 'status' -> Recebe valor do tipo string, representando o status do ninho
-## 'risco' -> Recebe valor do tipo string, representando o risco do ninho
-## 'dias_para_eclosao' -> Recebe valor do tipo inteiro, representando a quantidade de dias restantes para a eclosão dos ovos
-## 'predadores' -> Recebe valor do tipo booleano, indicando se há predadores na região do ninho
+## Sobre os dados:
+### Cada ninho é representado por um dicionário com as informações solicitadas
+### Chaves do dicionário:
+### - 'regiao' -> Recebe valor do tipo string, representando a região onde o ninho está localizado
+### - 'quantidade_ovos' -> Recebe valor do tipo inteiro, representando a quantidade de ovos no ninho
+### 'status' -> Recebe valor do tipo string, representando o status do ninho
+### 'risco' -> Recebe valor do tipo string, representando o risco do ninho
+### 'dias_para_eclosao' -> Recebe valor do tipo inteiro, representando a quantidade de dias restantes para a eclosão dos ovos
+### 'predadores' -> Recebe valor do tipo booleano, indicando se há predadores na região do ninho
 
 # Criação dos ninhos iniciais
 ninho_1 = {'regiao': 'Praia Norte', 'quantidade_ovos': 102, 'status': 'intacto',
