@@ -1,6 +1,7 @@
 import dados_ninho
 import funcoes_ninho
 import funcoes_analise
+import funcoes_complementares
 
 ninhos = dados_ninho.lista_de_ninhos
 
@@ -66,7 +67,7 @@ def exibir_ninhos():
     funcoes_ninho.exibe_ninhos()
     opcao_continuar = input("Deseja consultar o relatório novamente? (sim/não): ")
     if opcao_continuar.lower() == 'sim':
-        consultar_estatisticas()
+        exibir_ninhos()
     elif opcao_continuar.lower() == 'não':
         print("Voltando ao menu principal...")
     else:
@@ -97,18 +98,20 @@ def consultar_estatisticas():
         elif opcao_estatistica == '4':
             print("Você escolheu ver a região com maior quantidade de ninhos sob risco 'crítico'")
             ninhos_criticos = funcoes_analise.lista_ninhos_condional(ninhos, 'risco', 'crítico')
-            ninho_mais_critico = {}
+            valores_unicos_regioes = funcoes_complementares.valores_unicos_chave(ninhos_criticos, 'regiao')
+            regiao_mais_critico = ""
             maior = 0
-            for ninho in ninhos_criticos:
-                if ninho['quantidade_ovos'] >= maior:
-                    maior = ninho['quantidade_ovos']
-                    ninho_mais_critico = ninho
-            print(f'Região com maior quantidade de ninhos sob risco "crítico": {ninho_mais_critico['regiao']}')
+            for regiao in valores_unicos_regioes:
+                quantidade_ninhos = funcoes_analise.total_ninhos_condicional(ninhos_criticos, 'regiao', regiao)
+                if quantidade_ninhos > maior:
+                    maior = quantidade_ninhos
+                    regiao_mais_critico = regiao
+            print(f'Região com maior quantidade de ninhos sob risco "crítico": {regiao_mais_critico}')
             
         elif opcao_estatistica == '5':
             print("Você escolheu ver a quantidade de ninhos com presença de predadores e com status 'danificado'")
             ninhos_danificados = funcoes_analise.lista_ninhos_condional(ninhos, 'status', 'danificado')
-            total = funcoes_analise.total_ninhos_condicional(ninhos_danificados, 'predadores', True)
+            total = funcoes_analise.total_ninhos_condicional(ninhos_danificados, 'predadores', 'true')
             print(f'Quantidade de ninhos com presença de predadores e status "danificado": {total}')
             
         elif opcao_estatistica.lower() != 'voltar':

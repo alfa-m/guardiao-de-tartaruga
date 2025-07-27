@@ -22,5 +22,5 @@ ninho_11 = {'regiao': 'Praia Oeste', 'quantidade_ovos': 50, 'status': 'ameaçado
       'risco': 'sob observação', 'dias_para_eclosao': 9, 'predadores': True}
 
 lista_de_ninhos = [ninho_1, ninho_2, ninho_3, ninho_4, ninho_5,
-                   ninho_5, ninho_7, ninho_8, ninho_9, ninho_10,
+                   ninho_6, ninho_7, ninho_8, ninho_9, ninho_10,
                    ninho_11]

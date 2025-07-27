@@ -12,9 +12,9 @@ def mostra_total_ninhos(lista_de_ninhos):
 
 def lista_ninhos_condional(lista_de_ninhos, condicao, valor_condicao):
     if condicao == 'predadores' and valor_condicao == 'true':
-        return [ninho for ninho in lista_de_ninhos if ninho['predadores']]
+        return [ninho for ninho in lista_de_ninhos if ninho['predadores'] == True]
     elif condicao == 'predadores' and valor_condicao == 'false':
-        return [ninho for ninho in lista_de_ninhos if not ninho['predadores']]
+        return [ninho for ninho in lista_de_ninhos if ninho['predadores'] == False]
     elif condicao == 'eclosão' and valor_condicao == 'sim':
         return [ninho for ninho in lista_de_ninhos if ninho['dias_para_eclosao'] <= 5]
     elif condicao == 'eclosão' and valor_condicao == 'não':
