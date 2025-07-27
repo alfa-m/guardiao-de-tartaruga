@@ -67,7 +67,8 @@ ninhos = [
 ["Praia Norte", 60, "danificado", "crítico", 5, True],
 ]
 
-> [!NOTE] Você pode completar até 10 registros ou mais, se desejar.
+> [!NOTE]
+> Você pode completar até 10 registros ou mais, se desejar.
 
 ## Requisitos técnicos
 - Você deverá estudar dicionário.
