@@ -2,6 +2,9 @@
 ## Descrição
 Tarefa individual realizada para o curso "Inteligência Artificial Aplicada aos Desafios Socioambientais da Amazônia" do I2A2.
 
+## Como executar
+Executar o código main.py ou executar alguns dos notebooks jupyter contidos em [notebooks](./notebooks)
+
 ## Cenário
 Em uma comunidade ribeirinha da Amazônia, às margens de um igarapé ameaçado por alterações no regime das chuvas e pela presença cada vez maior de embarcações, nasce um esforço coletivo de conservação dos quelônios. Inspirados em projetos regionais como o Pé-de-Pincha, moradores locais, liderados por professores da escola comunitária e jovens voluntários, deram início a um programa de monitoramento artesanal de ninhos de tartarugas. A proposta é garantir que o maior número possível de filhotes chegue com vida ao rio, fortalecendo o ciclo de preservação e a cultura local.
 
