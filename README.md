@@ -29,6 +29,7 @@ Características do sistema:
 - Realizar análises por categoria
 - Identificar erros ou registros inconsistentes
 - Gerar relatórios úteis para a tomada de decisão semanal
+
 Características do código:
 - Rodar em Jupyter Notebook
 - Interpretável e funcional
