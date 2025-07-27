@@ -59,6 +59,7 @@ Características do código:
 - [X] Valide os dados inseridos (ex: não aceitar ovos negativos, status inválido, emojis diferentes dos status, etc.).
 
 Dados iniciais (exemplo mínimo com 5 registros)
+
 ninhos = [
 ["Praia Norte", 102, "intacto", "estável", 12, False],
 ["Praia Central", 89, "danificado", "crítico", 3, True],
