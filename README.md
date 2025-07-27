@@ -29,6 +29,7 @@ Características do sistema:
 - Realizar análises por categoria
 - Identificar erros ou registros inconsistentes
 - Gerar relatórios úteis para a tomada de decisão semanal
+
 Características do código:
 - Rodar em Jupyter Notebook
 - Interpretável e funcional
@@ -57,7 +58,7 @@ Características do código:
     - [X] Encerrar o sistema
 - [X] Valide os dados inseridos (ex: não aceitar ovos negativos, status inválido, emojis diferentes dos status, etc.).
 
-Dados iniciais (exemplo mínimo com 5 registros)
+Dados iniciais (exemplo mínimo com 5 registros):
 ninhos = [
 ["Praia Norte", 102, "intacto", "estável", 12, False],
 ["Praia Central", 89, "danificado", "crítico", 3, True],
@@ -66,7 +67,8 @@ ninhos = [
 ["Praia Norte", 60, "danificado", "crítico", 5, True],
 ]
 
-[!NOTE] Você pode completar até 10 registros ou mais, se desejar.
+> [!NOTE]
+> Você pode completar até 10 registros ou mais, se desejar.
 
 ## Requisitos técnicos
 - Você deverá estudar dicionário.
